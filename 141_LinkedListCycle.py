@@ -8,6 +8,7 @@ class ListNode():
 
 class Solution():
 	def hasCycle(head: ListNode) -> bool:
+		# O(n) time, O(n) space
 		curr = head
 		hashSet = {}
 		while curr:
@@ -15,6 +16,17 @@ class Solution():
 				return True
 			else:
 				hashSet[curr] = curr.val
+		return False
+
+	def hasCycle2(head: ListNode) -> bool:
+		# O(n) time, O(1) space
+		fast, slow = head, head
+
+		while fast and fast.next:
+			fast = fast.next.next
+			slow = slow.next
+			if fast == slow:
+				return True
 		return False
 
 myLinkedList = ListNode(3)
@@ -36,3 +48,4 @@ tail.next = newNodePos
 tail = newNodePos
 
 print(Solution.hasCycle(myLinkedList))
+print(Solution.hasCycle2(myLinkedList))
