@@ -1,5 +1,6 @@
 class Solution():
 	def isAnagram(s:str, t:str) -> bool:
+		# O(s+t) time and O(s+t) space
 		if len(s) != len(t):
 			return False
 
@@ -19,6 +20,12 @@ class Solution():
 		for key_t in mapT.keys():
 			if mapT[key_t] != mapS.get(key_t, 0):
 				return False
+
+		# # O(slogs + tlogt) time and O(1) space
+		# if sorted(s) == sorted(t):
+		# 	return True
+		# else:
+		# 	return False
 
 		return True
 
